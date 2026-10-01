@@ -1,0 +1,203 @@
+﻿/* style.css - Emotion Detector Web Application Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: #e0e0e0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #e94560, #0f3460, #533483);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #a0a0b0;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Input Section */
+.input-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.input-section label {
+    display: block;
+    font-size: 1rem;
+    color: #b0b0c0;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+textarea {
+    width: 100%;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    color: #e0e0e0;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+    margin-bottom: 16px;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #e94560;
+}
+
+textarea::placeholder {
+    color: #666680;
+}
+
+button {
+    background: linear-gradient(135deg, #e94560, #c23152);
+    color: white;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Result Section */
+.result-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.result-section h2 {
+    font-size: 1.3rem;
+    color: #b0b0c0;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.response-box {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #d0d0e0;
+    min-height: 70px;
+}
+
+/* Emotion Cards */
+.emotion-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.emotion-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 20px 10px;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.3s ease;
+}
+
+.emotion-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(233, 69, 96, 0.4);
+}
+
+.emotion-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.emotion-name {
+    font-size: 0.85rem;
+    color: #a0a0b0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.emotion-score {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #e94560;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: #666680;
+    font-size: 0.85rem;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .emotion-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .emotion-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

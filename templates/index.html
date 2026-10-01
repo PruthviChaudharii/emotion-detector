@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detector - IBM Watson NLP</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Emotion Detector</h1>
+            <p class="subtitle">Powered by IBM Watson NLP</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <label for="textToAnalyse">Enter text to analyze:</label>
+                <textarea
+                    id="textToAnalyse"
+                    name="textToAnalyse"
+                    placeholder="Type your text here... (e.g., I am so happy today!)"
+                    rows="5"
+                ></textarea>
+                <button id="btn-submit" onclick="RunSentimentAnalysis()">
+                    Analyze Emotion
+                </button>
+            </div>
+
+            <div class="result-section">
+                <h2>Analysis Result</h2>
+                <div id="system_response" class="response-box">
+                    Your emotion analysis result will appear here.
+                </div>
+            </div>
+
+            <div class="emotion-cards">
+                <div class="emotion-card" id="anger-card">
+                    <div class="emotion-icon">😠</div>
+                    <div class="emotion-name">Anger</div>
+                    <div class="emotion-score" id="anger-score">-</div>
+                </div>
+                <div class="emotion-card" id="disgust-card">
+                    <div class="emotion-icon">🤢</div>
+                    <div class="emotion-name">Disgust</div>
+                    <div class="emotion-score" id="disgust-score">-</div>
+                </div>
+                <div class="emotion-card" id="fear-card">
+                    <div class="emotion-icon">😨</div>
+                    <div class="emotion-name">Fear</div>
+                    <div class="emotion-score" id="fear-score">-</div>
+                </div>
+                <div class="emotion-card" id="joy-card">
+                    <div class="emotion-icon">😊</div>
+                    <div class="emotion-name">Joy</div>
+                    <div class="emotion-score" id="joy-score">-</div>
+                </div>
+                <div class="emotion-card" id="sadness-card">
+                    <div class="emotion-icon">😢</div>
+                    <div class="emotion-name">Sadness</div>
+                    <div class="emotion-score" id="sadness-score">-</div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>IBM Developer Skills Network | AI/ML Final Project</p>
+        </footer>
+    </div>
+
+    <script>
+        function RunSentimentAnalysis() {
+            const textToAnalyse = document.getElementById("textToAnalyse").value;
+
+            if (!textToAnalyse.trim()) {
+                document.getElementById("system_response").innerText =
+                    "Please enter some text to analyze.";
+                return;
+            }
+
+            document.getElementById("system_response").innerText = "Analyzing...";
+
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("system_response").innerText = this.responseText;
+                }
+            };
+            xhttp.open(
+                "GET",
+                "emotionDetector?textToAnalyse=" + encodeURIComponent(textToAnalyse),
+                true
+            );
+            xhttp.send();
+        }
+
+        // Allow Enter key to submit (Ctrl+Enter)
+        document.getElementById("textToAnalyse").addEventListener("keydown", function(e) {
+            if (e.ctrlKey && e.key === "Enter") {
+                RunSentimentAnalysis();
+            }
+        });
+    </script>
+</body>
+</html>
